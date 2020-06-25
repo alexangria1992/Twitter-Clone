@@ -1,6 +1,11 @@
-{% extends 'base.html' %} {% block content %} Welcome to Tweetme2
+{% extends 'base.html' %} {% block content %}
+<div class="row">
+    <div class="col text-center">
+        <h1>Welcome to Tweetme 2</h1>
+    </div>
+</div>
 
-<div id="tweets">
+<div class="row" id="tweets">
     Loading...
 </div>
 
@@ -27,7 +32,7 @@
     }
 
     function formatTweetElement(tweet) {
-        var formattedTweet = "<div class='mb-4 tweet' id='tweet-id'" + tweet.id +
+        var formattedTweet = "<div class='col-12 col-md-10 mx-auto border rounded py-3 mb-4 tweet' id='tweet-id'" + tweet.id +
             "'><p>" + tweet.content +
             "</p><div class='btn-group'>" +
             LikeBtn(tweet) + "</div></div>"
