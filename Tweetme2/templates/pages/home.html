@@ -10,7 +10,7 @@
         <form class="form" id="tweet-create-form" method="POST" action="/create-tweet">
             {% csrf_token %}
             <input type="hidden" name="next" value="/">
-            <textarea name="content" placeholder="Your tweet..." class="form-control"></textarea>
+            <textarea required="required" name="content" placeholder="Your tweet..." class="form-control"></textarea>
             <button type="submit" class="btn btn-primary">Tweet</button>
         </form>
     </div>
@@ -37,8 +37,9 @@
                 const newTweetJson = xhr.response
                 console.log(newTweetJson.likes)
                 const newTweetElement = formatTweetElement(newTweetJson)
-                console.log(newTweetElement)
-                tweetsContainerElement.prepend(newTweetElement)
+                const ogHtml = tweetsContainerElement.innerHTML
+                tweetsContainerElement.innerHTML = newTweetElement + ogHtml
+                myForm.reset()
             }
 
 
